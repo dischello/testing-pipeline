@@ -16,8 +16,7 @@ node('master'){
         $class: 'GitSCM', 
         branches: scm.branches, 
         doGenerateSubmoduleConfigurations: scm.doGenerateSubmoduleConfigurations,
-        extensions: scm.extensions,
-        submoduleCfg: [],
+        extensions: [scm.extensions, [[$class: 'CloneOption', timeout: 120]]],
         userRemoteConfigs: scm.userRemoteConfigs
         ])
 }

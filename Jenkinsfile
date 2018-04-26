@@ -12,6 +12,7 @@ pipeline {
 */
 node('master'){
     stage('Checkout'){
+        sh 'rm -rf *'
         checkout([
             $class: 'GitSCM', 
             branches: scm.branches, 

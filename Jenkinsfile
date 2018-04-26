@@ -16,7 +16,7 @@ node('master'){
             $class: 'GitSCM', 
             branches: scm.branches, 
             doGenerateSubmoduleConfigurations: scm.doGenerateSubmoduleConfigurations,
-            extensions: scm.extensions + [[$class: 'SubmoduleOption', timeout: 120]],
+            extensions: scm.extensions + [[$class: 'CheckoutOption', timeout: 120]],
             userRemoteConfigs: scm.userRemoteConfigs
             ])
     }

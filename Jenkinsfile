@@ -8,6 +8,7 @@ pipeline {
                 script{
                     env.HYBRIS_TESTS="SoapUI,QA_API_Tests"}
     		sendSlackNotification type: 'build-succeed'
+                echo "${env.HYBRIS_TESTS}"
             }
         }
     }

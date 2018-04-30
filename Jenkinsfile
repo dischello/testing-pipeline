@@ -10,6 +10,7 @@ pipeline {
                     echo "${env.WORKSPACE}"
                     env.WORKDIR_SPACE="${env.WORKSPACE}"
                     env.ARTIFACT_VERSION="release-6.0.1"
+                    def failedTests = "Anonymous and user's carts should be merged on login.03.05.01 - Both Anonymous and Logged in carts are from the US, Anonymous cart is removed after merge, products are in User's cart"
                 }
                 sendSlackNotification type: 'build-started'
     		sendSlackNotification type: 'build-unstable'

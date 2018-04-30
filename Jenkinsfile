@@ -12,7 +12,7 @@ pipeline {
                     env.ARTIFACT_VERSION="release-6.0.1"
                 }
                 sendSlackNotification type: 'build-started'
-    		sendSlackNotification type: 'build-succeed'
+    		sendSlackNotification type: 'build-unstable'
                 echo "${env.HYBRIS_TESTS}"
             }
         }

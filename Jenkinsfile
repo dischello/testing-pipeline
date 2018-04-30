@@ -1,4 +1,4 @@
-@Library('hybris-geuk@v1.6') _ // Load Required libraries from Shared Pipeline Library
+@Library('hybris-geuk@bugfix/test-slack-notification-lib') _ // Load Required libraries from Shared Pipeline Library
 
 pipeline {
     agent any

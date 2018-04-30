@@ -6,7 +6,9 @@ pipeline {
         stage('Dummy'){
             steps{
                 script{
-                    env.HYBRIS_TESTS="SoapUI,QA_API_Tests"}
+                    env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
+                    env.WORKDIR_SPACE="."
+                }
                 sendSlackNotification type: 'build-started'
     		sendSlackNotification type: 'build-succeed'
                 echo "${env.HYBRIS_TESTS}"

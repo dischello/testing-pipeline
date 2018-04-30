@@ -7,7 +7,8 @@ pipeline {
             steps{
                 script{
                     env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
-                    env.WORKDIR_SPACE="."
+                    echo "${env.WORKSPACE}"
+                    env.WORKDIR_SPACE="${env.WORKSPACE}"
                 }
                 sendSlackNotification type: 'build-started'
     		sendSlackNotification type: 'build-succeed'

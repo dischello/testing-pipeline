@@ -11,16 +11,19 @@ pipeline {
     }
     post {
       success {
-            env.WORKDIR_SPACE=""
+            env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
     		sendSlackNotification type: 'build-succeed'
     	}
     	unstable {
+            env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
     		sendSlackNotification type: 'build-unstable'
     	}
     	failure {
+            env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
     		sendSlackNotification type: 'build-failed'
     	}
     	aborted {
+            env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
     		sendSlackNotification type: 'build-aborted'
     	}
     }

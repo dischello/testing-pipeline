@@ -5,26 +5,27 @@ pipeline {
     stages{
         stage('Dummy'){
             steps{
-                echo "Dummy"
+            env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
+    		sendSlackNotification type: 'build-succeed'
             }
         }
     }
     post {
       success {
-            env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
-    		sendSlackNotification type: 'build-succeed'
+            //env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
+    		//sendSlackNotification type: 'build-succeed'
     	}
     	unstable {
-            env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
-    		sendSlackNotification type: 'build-unstable'
+            //env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
+    		//sendSlackNotification type: 'build-unstable'
     	}
     	failure {
-            env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
-    		sendSlackNotification type: 'build-failed'
+            //env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
+    		//sendSlackNotification type: 'build-failed'
     	}
     	aborted {
-            env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
-    		sendSlackNotification type: 'build-aborted'
+            //env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
+    		//sendSlackNotification type: 'build-aborted'
     	}
     }
 }

@@ -9,6 +9,7 @@ pipeline {
                     env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
                     echo "${env.WORKSPACE}"
                     env.WORKDIR_SPACE="${env.WORKSPACE}"
+                    env.ARTIFACT_VERSION="release-6.0.1"
                 }
                 sendSlackNotification type: 'build-started'
     		sendSlackNotification type: 'build-succeed'

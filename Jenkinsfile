@@ -2,6 +2,11 @@
 
 pipeline {
     agent any
+    options {
+        skipDefaultCheckout() // Disable SCM checkout running for every stage
+        disableConcurrentBuilds() // Disable concurent builds
+        buildDiscarder(logRotator(numToKeepStr:'5'))
+    }
     stages{
         stage('Dummy'){
             steps{

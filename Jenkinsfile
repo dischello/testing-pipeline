@@ -10,16 +10,13 @@ pipeline {
     stages{
         stage('Dummy'){
             steps{
-                script{
-                    env.HYBRIS_TESTS="SoapUI,QA_API_Tests"
-                    echo "${env.WORKSPACE}"
-                    env.WORKDIR_SPACE="${env.WORKSPACE}"
-                    env.ARTIFACT_VERSION="release-6.0.1"
-                    //def failedTests = "Anonymous and user's carts should be merged on login.03.05.01 - Both Anonymous and Logged in carts are from the US, Anonymous cart is removed after merge, products are in User's cart"
-                }
-                sendSlackNotification type: 'build-started'
-    		sendSlackNotification type: 'build-unstable'
-                echo "${env.HYBRIS_TESTS}"
+            checkout([
+						            $class: 'GitSCM',
+						            branches: scm.branches,
+						            doGenerateSubmoduleConfigurations: scm.doGenerateSubmoduleConfigurations,
+						            extensions: scm.extensions + [[$class: 'CheckoutOption', timeout: 30]] + [[$class: 'CloneOption', timeout: 30]],
+						            userRemoteConfigs: scm.userRemoteConfigs
+						            ])
             }
         }
     }

@@ -9,23 +9,10 @@ pipeline {
     }
     stages{
         stage('Dummy'){
+	    agent {lable {'master'}}
             steps{
-	    sh 'mkdir test'
-		    dir('./test'){
-		    sh "git init"
-		    sh "git remote add origin https://github.com/dischello/testing-pipeline"
-		    sh "git config core.sparsecheckout true"
-		    sh 'echo "gelscode/gelsecomm" >> .git/info/sparse-checkout'
-		    sh 'echo "gelscode/config" >> .git/info/sparse-checkout'
-			    
-		    }
-            checkout([
-						            $class: 'GitSCM',
-						            branches: scm.branches,
-						            doGenerateSubmoduleConfigurations: scm.doGenerateSubmoduleConfigurations,
-						            extensions: scm.extensions + [[$class: 'CheckoutOption', timeout: 30]] + [[$class: 'CloneOption', depth: 2, shallow: true, timeout: 30]],
-						            userRemoteConfigs: scm.userRemoteConfigs
-						            ])
+	    	stash include: '/var/lib/jenkins/workspace/test_pipeline_checkout_and_github_poll/*', name: 'Git_Revision'
+		unstash 'Git_Revision'
             }
         }
     }

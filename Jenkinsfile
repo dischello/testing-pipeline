@@ -9,7 +9,7 @@ pipeline {
     }
     stages{
         stage('Dummy'){
-	    agent {lable {'master'}}
+	    agent {label 'master'}
             steps{
 	    	stash include: '/var/lib/jenkins/workspace/test_pipeline_checkout_and_github_poll/*', name: 'Git_Revision'
 		unstash 'Git_Revision'

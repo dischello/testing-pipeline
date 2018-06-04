@@ -13,8 +13,9 @@ pipeline {
             steps{
 		    build 'test_pipeline_checkout_and_github_poll'
 		    dir('/var/lib/jenkins/workspace/test_pipeline_checkout_and_github_poll'){
-			    sh "git checkout ${scm.branches[0].name}"
-			    sh "git pull"
+			    git branch: "${scm.branches[0].name}", credentialsId: 'PASS_GitHub', url: 'https://github.com/dischello/testing-pipeline' 
+			    //sh "git checkout ${scm.branches[0].name}"
+			    //sh "git pull"
 			    stash includes: '**/*', name: 'Git_Revision'
 		    }
 		unstash 'Git_Revision'

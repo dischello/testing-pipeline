@@ -12,8 +12,8 @@ pipeline {
 	    agent {label 'master'}
             steps{
 		    build 'test_pipeline_checkout_and_github_poll'
-		    sh 'git checkout scm.branch'
 		    dir('/var/lib/jenkins/workspace/test_pipeline_checkout_and_github_poll'){
+			    sh 'git checkout scm.branch'
 			    stash includes: '**/*', name: 'Git_Revision'
 		    }
 		unstash 'Git_Revision'

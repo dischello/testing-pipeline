@@ -13,7 +13,6 @@ pipeline {
             steps{
 		    build 'test_pipeline_checkout_and_github_poll'
 		    dir('/var/lib/jenkins/workspace/test_pipeline_checkout_and_github_poll'){
-			    sh ""
 			    sh "git checkout ${scm.branches[0].name}"
 			    stash includes: '**/*', name: 'Git_Revision'
 		    }

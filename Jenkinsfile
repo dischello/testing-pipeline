@@ -11,7 +11,9 @@ pipeline {
         stage('Dummy'){
 	    agent {label 'master'}
             steps{
-	    	stash includes: '/var/lib/jenkins/workspace/test_pipeline_checkout_and_github_poll/**/*', name: 'Git_Revision'
+		    dir('/var/lib/jenkins/workspace/test_pipeline_checkout_and_github_poll'){
+			    stash includes: '**/*', name: 'Git_Revision'
+		    }
 		unstash 'Git_Revision'
             }
         }

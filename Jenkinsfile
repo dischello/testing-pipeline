@@ -11,8 +11,8 @@ pipeline {
         stage('Dummy'){
 	    agent {label 'master'}
             steps{
-		    build job: 'test_pipeline_checkout_and_github_poll', parameters: [string(name: 'BRANCH', value: "${scm.branches[0].name}")]
-		    dir('/var/lib/jenkins/workspace/test_pipeline_checkout_and_github_poll'){
+		   // build job: 'test_pipeline_checkout_and_github_poll', parameters: [string(name: 'BRANCH', value: "${scm.branches[0].name}")]
+		    //dir('/var/lib/jenkins/workspace/test_pipeline_checkout_and_github_poll'){
 			    //git branch: "${scm.branches[0].name}", credentialsId: 'PASS_GitHub', url: 'https://github.com/dischello/testing-pipeline' 
 			    //sh "git checkout ${scm.branches[0].name}"
 			    //sh "git pull"
@@ -22,8 +22,8 @@ pipeline {
 			    echo ${CHANGE_TITLE}
 			    echo ${CHANGE_TARGET}
 			    stash includes: '**/*', name: 'Git_Revision'
-		    }
-		unstash 'Git_Revision'
+		    //}
+		//unstash 'Git_Revision'
             }
         }
     }

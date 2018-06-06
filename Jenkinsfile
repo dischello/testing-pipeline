@@ -16,11 +16,7 @@ pipeline {
 			    //git branch: "${scm.branches[0].name}", credentialsId: 'PASS_GitHub', url: 'https://github.com/dischello/testing-pipeline' 
 			    //sh "git checkout ${scm.branches[0].name}"
 			    //sh "git pull"
-			    echo "${GIT_COMMIT}"
-			    echo "${CHANGE_ID}"
-			    echo "${CHANGE_URL}"
-			    echo "${CHANGE_TITLE}"
-			    echo "${CHANGE_TARGET}"
+			    sh 'git rev-parse --short HEAD'
 			    //stash includes: '**/*', name: 'Git_Revision'
 		    //}
 		//unstash 'Git_Revision'
